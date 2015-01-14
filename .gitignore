@@ -55,3 +55,9 @@ target/
 
 # Pycharm
 /.idea
+
+#sqlLite
+db.sqlite3
+
+#Archivos temporales ubuntu
+*~

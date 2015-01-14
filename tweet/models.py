@@ -6,4 +6,4 @@ from django.db import models
 class Tweet(models.Model):
     mensaje = models.TextField(max_length=500)
     timestamp = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignObject(User)
+    user = models.ForeignKey(User)
