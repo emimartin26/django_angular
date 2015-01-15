@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,8 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'pipeline',
     'tweet',
-    'api'
+    'app'
 
 )
 
@@ -85,3 +86,48 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_final')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+
+
+# Configuracion pipeline
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
+
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
+
+# CSS Files.
+PIPELINE_CSS = {
+    # Project libraries.
+    'styles': {
+        'source_filenames': (
+            'bower_components/bootstrap/dist/css/bootstrap.css',
+        ),
+        # Compress passed libraries and have
+        # the output in`css/libs.min.css`.
+        'output_filename': 'css/libs.min.css',
+    }
+    # ...
+}
+# JavaScript files.
+PIPELINE_JS = {
+    # Project JavaScript libraries.
+    'libraries': {
+        'source_filenames': (
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',
+        ),
+        # Compress all passed files into `js/libs.min.js`.
+        'output_filename': 'js/libs.min.js',
+    }
+    # ...
+}
+

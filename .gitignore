@@ -61,3 +61,5 @@ db.sqlite3
 
 #Archivos temporales ubuntu
 *~
+# Ignore bower components.
+bower_components
