@@ -9,7 +9,7 @@ router = DefaultRouter()
 router.register(r'tweets', TweetViewSet)
 
 urlpatterns = patterns('',
-    url(r'^','app.views.index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/',include(router.urls)),
+    url(r'^$','app.views.index'),
 )

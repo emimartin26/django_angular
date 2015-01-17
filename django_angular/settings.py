@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'rest_framework',
     'pipeline',
     'tweet',
@@ -51,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'django_angular.urls'
@@ -96,38 +98,4 @@ STATICFILES_FINDERS = (
 )
 
 
-
-# Configuracion pipeline
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
-
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
-
-# CSS Files.
-PIPELINE_CSS = {
-    # Project libraries.
-    'styles': {
-        'source_filenames': (
-            'bower_components/bootstrap/dist/css/bootstrap.css',
-        ),
-        # Compress passed libraries and have
-        # the output in`css/libs.min.css`.
-        'output_filename': 'css/libs.min.css',
-    }
-    # ...
-}
-# JavaScript files.
-PIPELINE_JS = {
-    # Project JavaScript libraries.
-    'libraries': {
-        'source_filenames': (
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/bootstrap/dist/js/bootstrap.js',
-        ),
-        # Compress all passed files into `js/libs.min.js`.
-        'output_filename': 'js/libs.min.js',
-    }
-    # ...
-}
 

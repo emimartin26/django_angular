@@ -63,3 +63,10 @@ db.sqlite3
 *~
 # Ignore bower components.
 bower_components
+
+#configuracion local django
+
+local.py
+
+#Archivos estaticos
+/static_final/
