@@ -66,7 +66,7 @@ bower_components
 
 #configuracion local django
 
-local.py
+django_angular/settings/local.py
 
 #Archivos estaticos
 /static_final/
