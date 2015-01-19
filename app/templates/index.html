@@ -11,9 +11,19 @@
 
 </head>
 <body>
-Hola mundo
+<div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <section ng-view></section>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+</div>
 
-<!-- Include JavaScript files -->
+
+<!-- Include JavaScript files bower -->
 {% javascript 'libraries' %}
+
 </body>
 </html>

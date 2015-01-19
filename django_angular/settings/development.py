@@ -67,9 +67,22 @@ PIPELINE_JS = {
         'source_filenames': (
             'bower_components/jquery/dist/jquery.js',
             'bower_components/bootstrap/dist/js/bootstrap.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-route/angular-route.js',
+            'bower_components/angular-resource/angular-resource.js',
+            'bower_components/angular-cookies/angular-cookies.js',
+            'app/example/module.js',
+            'app/example/controller.js',
+            'app/example/routes.js',
+            'app/tweet/module.js',
+            'app/tweet/service.js',
+            'app/tweet/controller.js',
+            'app/tweet/routes.js',
+            'app/aplication.js',
+
         ),
         # Compress all passed files into `js/libs.min.js`.
         'output_filename': 'js/libs.min.js',
-    }
+    },
     # ...
 }

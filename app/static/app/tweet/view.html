@@ -1,0 +1,13 @@
+<!-- La view listar tweet -->
+<section data-ng-init="find()">
+	<h1>Tweets</h1>
+	<ul  class="list-group">
+		<!-- La lista de artículos -->
+		<li class="list-group-item" data-ng-repeat="tweet in tweets">
+			<h3 data-ng-bind="tweet.user"></h3>
+            <p data-ng-bind="tweet.mensaje"></p>
+			<small data-ng-bind="tweet.timestamp | date:'medium'"></small>
+            </br>
+		</li>
+	</ul>
+</section>
