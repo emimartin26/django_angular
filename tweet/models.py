@@ -7,3 +7,7 @@ class Tweet(models.Model):
     mensaje = models.TextField(max_length=500)
     timestamp = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
+
+
+    class Meta:
+        ordering = ['-timestamp']

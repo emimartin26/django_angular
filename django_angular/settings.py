@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -39,8 +40,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'rest_framework',
     'pipeline',
-    'tweet',
-    'app'
+    'tweet'
 
 )
 
@@ -97,5 +97,94 @@ STATICFILES_FINDERS = (
     'pipeline.finders.PipelineFinder',
 )
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
+#############################################################################
+# Django Pipeline
+#############################################################################
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
+
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
+
+# CSS Files.
+PIPELINE_CSS = {
+    # Project libraries.
+    'styles': {
+        'source_filenames': (
+            'bower_components/bootstrap/dist/css/bootstrap.css',
+        ),
+        # Compress passed libraries and have
+        # the output in`css/libs.min.css`.
+        'output_filename': 'css/libs.min.css',
+    }
+    # ...
+}
+# JavaScript files.
+PIPELINE_JS = {
+    # Project JavaScript libraries.
+    'libraries': {
+        'source_filenames': (
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-route/angular-route.js',
+            'bower_components/angular-resource/angular-resource.js',
+            'bower_components/angular-cookies/angular-cookies.js',
+            'javascript/aplication.js',
+            'javascript/aplication.config.js',
+            'javascript/auth/auth.module.js',
+            'javascript/auth/controllers/login.controller.js',
+            'javascript/auth/interceptors/auth.interceptor.js',
+            'javascript/auth/services/auth.service.js',
+            'javascript/auth/routes/auth.routes.js',
+            'javascript/static/static.module.js',
+            'javascript/static/controllers/index.controller.js',
+            'javascript/static/routes/static.routes.js',
+            'javascript/tweet/tweet.module.js',
+            'javascript/tweet/controllers/tweet.controller.js',
+            'javascript/tweet/services/tweet.service.js',
+            'javascript/tweet/routes/tweet.routes.js',
+
+        ),
+        # Compress all passed files into `js/libs.min.js`.
+        'output_filename': 'js/libs.min.js',
+    },
+    # ...
+}
 
 
+#########################################################
+# Jason Web Token
+##########################################################
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14)
+}
+
+
+## si APPEND_SLASH  es true cuando entre a  www.webpage.com/api
+## django me redirecciona a www.webpage.com/api/ , es decir le agrega "/"
+APPEND_SLASH = False

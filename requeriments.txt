@@ -1,9 +1,11 @@
 Django==1.7.3
+PyJWT==0.3.2
 Unipath==1.0
 argparse==1.2.1
 django-debug-toolbar==1.2.2
 django-pipeline==1.4.3
 djangorestframework==3.0.3
+djangorestframework-jwt==1.1.1
 futures==2.2.0
 sqlparse==0.1.14
 wsgiref==0.1.2

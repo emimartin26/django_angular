@@ -1,0 +1,15 @@
+
+<section>
+	<h1>Nuevo Artículo</h1>
+	<form data-ng-submit="vm.create()" novalidate>
+		<div>
+			<label for="mensaje">Contenido</label>
+			<div>
+				<textarea data-ng-model="vm.mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje"></textarea>
+			</div>
+		</div>
+		<div>
+			<input type="submit">
+		</div>
+	</form>
+</section>
