@@ -13,6 +13,8 @@
     vm.login = login;
     vm.user = {};
 
+    //Auth.activate();
+
     function login() {
       Auth.login(vm.username, vm.password);
     }

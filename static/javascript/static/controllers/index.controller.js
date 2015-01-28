@@ -18,7 +18,7 @@
       if (!Auth.getToken()) {
         $location.path('/login');
       } else {
-        $location.path('/tweets/create');
+        $location.path('/');
       }
     }
 

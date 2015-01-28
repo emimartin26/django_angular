@@ -11,7 +11,7 @@
 
 	function Tweets($resource) {
 		return $resource('/api/tweets/:tweetId', {
-			tweetId: '@_id'
+			tweetId: '@id'
 		}, {
 			update: {
 				method: 'PUT'

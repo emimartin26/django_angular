@@ -37,10 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    #'debug_toolbar',
     'rest_framework',
     'pipeline',
-    'tweet'
+    'tweet',
+    'authentication'
 
 )
 
@@ -121,6 +122,8 @@ PIPELINE_CSS = {
     'styles': {
         'source_filenames': (
             'bower_components/bootstrap/dist/css/bootstrap.css',
+            'bower_components/fontawesome/css/font-awesome.css',
+            'styles/style.css',
         ),
         # Compress passed libraries and have
         # the output in`css/libs.min.css`.
@@ -148,6 +151,7 @@ PIPELINE_JS = {
             'javascript/auth/routes/auth.routes.js',
             'javascript/static/static.module.js',
             'javascript/static/controllers/index.controller.js',
+            'javascript/static/controllers/nav.controller.js',
             'javascript/static/routes/static.routes.js',
             'javascript/tweet/tweet.module.js',
             'javascript/tweet/controllers/tweet.controller.js',
@@ -178,13 +182,15 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+
+
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),
     'JWT_ALLOW_REFRESH': True,
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14)
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14),
+
 }
-
-
 ## si APPEND_SLASH  es true cuando entre a  www.webpage.com/api
 ## django me redirecciona a www.webpage.com/api/ , es decir le agrega "/"
 APPEND_SLASH = False

@@ -8,6 +8,11 @@
             <p data-ng-bind="tweet.mensaje"></p>
 			<small data-ng-bind="tweet.timestamp | date:'medium'"></small>
             </br>
+
+            <p data-ng-show="vm.isOwner(tweet.user)">
+                <a href="/#!/tweets/[[tweet.id]]/edit">Editar</a>
+                <a href="javascript:void(0);" data-ng-click="vm.delete(tweet);">Borrar</a>
+            </p>
 		</li>
 	</ul>
 </section>

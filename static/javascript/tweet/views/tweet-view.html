@@ -1,0 +1,11 @@
+<section data-ng-init="vm.findOne()">
+	<h1>Visualizacion Tweet</h1>
+	<div class="well">
+		<li class="list-group-item" >
+			<h3 data-ng-bind="vm.tweet.user"></h3>
+            <p data-ng-bind="vm.tweet.mensaje"></p>
+			<small data-ng-bind="vm.tweet.timestamp | date:'medium'"></small>
+            </br>
+		</li>
+	</div>
+</section>

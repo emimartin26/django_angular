@@ -17,6 +17,16 @@
             controller: 'TweetController',
             controllerAs: 'vm',
 			templateUrl: '/static/javascript/tweet/views/tweet-create.html'
-	});
+	}).
+	when('/tweets/:tweetId', {
+	        controller: 'TweetController',
+            controllerAs: 'vm',
+			templateUrl: '/static/javascript/tweet/views/tweet-view.html'
+	}).
+	when('/tweets/:tweetId/edit', {
+			controller: 'TweetController',
+            controllerAs: 'vm',
+			templateUrl: '/static/javascript/tweet/views/tweet-edit.html'
+	});;
   }
 })();
